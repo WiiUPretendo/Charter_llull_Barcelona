@@ -9,66 +9,112 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff;
+            background-image: linear-gradient(to bottom, #f7f7f7, #e3e3e3);
             color: #333;
         }
         header {
-            background-color: #ff7f0e;
+            background-image: linear-gradient(to bottom, #ff7f0e, #e65400);
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
         header h1 {
             margin: 0;
             color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         nav {
-            background-color: #f58025;
+            background-image: linear-gradient(to bottom, #f58025, #d16e1e);
             padding: 10px 0;
             text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-radius: 10px;
         }
         nav a {
             color: #fff;
             text-decoration: none;
             padding: 0 20px;
+            border-radius: 5px;
+            background-color: #f58025;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
         nav a:hover {
-            text-decoration: underline;
+            background-color: #d16e1e;
         }
         section {
             padding: 20px;
             text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border: 1px solid #ddd;
         }
         footer {
-            background-color: #ff7f0e;
+            background-image: linear-gradient(to bottom, #ff7f0e, #e65400);
             padding: 10px 0;
             text-align: center;
             color: #fff;
             position: fixed;
             bottom: 0;
             width: 100%;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
         }
     </style>
+    <script>
+        function enviarMensaje() {
+            // Definir el contenido del mensaje
+            var mensaje = {
+                content: "Solicitud."
+            };
+
+            // Enviar el mensaje a través de la webhook
+            fetch('https://discord.com/api/webhooks/1235270585370804285/LvfLlZss3BL0Np8mJkLAZ_YX4hXNHifCzk-W59GXmeacZuCvD1tgetEnLvlFWsOmUJaN', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(mensaje)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al enviar el mensaje a Discord');
+                }
+                console.log('Mensaje enviado correctamente a Discord');
+            })
+            .catch(error => {
+                console.error('Error al enviar el mensaje a Discord:', error);
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
         <h1>Tienda Charter</h1>
     </header>
     <nav>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-        <a href="Creditos.html">Creditos</a>
+        <a href="#supermercado" onclick="enviarMensaje()">Supermercado</a>
+        <a href="#productos" onclick="enviarMensaje()">Productos</a>
+      <a href="Creditos.html" onclick="enviarMensaje()">Creditos</a>
     </nav>
-    <section id="nosotros">
-        <h2>Nosotros</h2>
-        <p>Charter es una tienda comprometida con la satisfacción del cliente. Nuestro objetivo es proporcionar productos de calidad y un excelente servicio a precios accesibles. ¡Ven y conócenos!</p>
+    <section id="supermercado">
+        <h2>Supermercado</h2>
+        <p>Bienvenidos a la página web [No Oficial] de una tienda Charter.</p>
+        <p>En nuestro supermercado encontrarás una amplia selección de productos frescos y de calidad a precios increíbles.</p>
     </section>
-    <section id="contacto">
-        <h2>Contacto</h2>
-        <p>¡Estamos aquí para ayudarte! Si tienes alguna pregunta, sugerencia o simplemente quieres decir hola, no dudes en ponerte en contacto con nosotros.</p>
-        <p>Correo electrónico: info@tiendacharter.com</p>
-        <p>Teléfono: 123-456-789</p>
-        <p>Ubicación: Badalona, España</p>
-    </section>
+    <section id="productos">
+        <h2>Productos</h2>
+        <p>Visita nuestra tienda física para descubrir una amplia variedad de productos disponibles, incluyendo:</p>
+        <ul>
+            <li>Alimentos frescos</li>
+            <li>Productos de limpieza</li>
+        </ul>
     <footer>
         &copy; 2024 Tienda Charter. Todos los derechos reservados.
     </footer>
